@@ -53,10 +53,10 @@ RM = /usr/local/Cellar/cmake/3.21.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sarahchieng/Desktop/6.837/assignment3
+CMAKE_SOURCE_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sarahchieng/Desktop/6.837/assignment3/build
+CMAKE_BINARY_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/compiler_depend.make
 include external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/progress.make
 
 external/src/glfw-3.3.2/CMakeFiles/uninstall:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2 && /usr/local/Cellar/cmake/3.21.2/bin/cmake -P /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2/cmake_uninstall.cmake
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2 && /usr/local/Cellar/cmake/3.21.2/bin/cmake -P /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2/cmake_uninstall.cmake
 
 uninstall: external/src/glfw-3.3.2/CMakeFiles/uninstall
 uninstall: external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build
 
 external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/clean:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/clean
 
 external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/depend:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sarahchieng/Desktop/6.837/assignment3 /Users/sarahchieng/Desktop/6.837/assignment3/external/src/glfw-3.3.2 /Users/sarahchieng/Desktop/6.837/assignment3/build /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2 /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/external/src/glfw-3.3.2 /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2 /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/depend
 

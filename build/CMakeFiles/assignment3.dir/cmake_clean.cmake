@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/assignment3.dir/assignment_code/assignment3/ClothSystemNode.cpp.o"
   "CMakeFiles/assignment3.dir/assignment_code/assignment3/ClothSystemNode.cpp.o.d"
+  "CMakeFiles/assignment3.dir/assignment_code/assignment3/MacGrid.cpp.o"
+  "CMakeFiles/assignment3.dir/assignment_code/assignment3/MacGrid.cpp.o.d"
   "CMakeFiles/assignment3.dir/assignment_code/assignment3/PendulumSystemNode.cpp.o"
   "CMakeFiles/assignment3.dir/assignment_code/assignment3/PendulumSystemNode.cpp.o.d"
   "CMakeFiles/assignment3.dir/assignment_code/assignment3/SimpleSimulationNode.cpp.o"

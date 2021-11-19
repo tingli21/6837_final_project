@@ -17,6 +17,7 @@
 #include "SimpleSimulationNode.hpp"
 #include "PendulumSystemNode.hpp"
 #include "ClothSystemNode.hpp"
+#include "MacGrid.hpp"
 
 
 namespace GLOO {
@@ -27,7 +28,7 @@ SimulationApp::SimulationApp(const std::string& app_name,
     : Application(app_name, window_size),
       integrator_type_(integrator_type),
       integration_step_(integration_step) {
-  // TODO: use integrator type and step to create integrators; 
+  // TODO: use integrator type and step to create integrators;
   // the lines below exist only to suppress compiler warnings.
 
   // one to grab root node
@@ -36,17 +37,20 @@ SimulationApp::SimulationApp(const std::string& app_name,
   //COMMENT OUT THE ONE YOU WANT TO RUN
 
   //simple simulation (e 0.05)
-  std::unique_ptr<SceneNode> simplenode = make_unique<SimpleSimulationNode>(integrator_type, integration_step);
-  root.AddChild(std::move(simplenode));
+  // std::unique_ptr<SceneNode> simplenode = make_unique<SimpleSimulationNode>(integrator_type, integration_step);
+  // root.AddChild(std::move(simplenode));
 
   //pendulum simulation (e 0.05)
-  std::unique_ptr<SceneNode> pendulumnode = make_unique<PendulumSystemNode>(integrator_type, integration_step);
-  root.AddChild(std::move(pendulumnode));
+  // std::unique_ptr<SceneNode> pendulumnode = make_unique<PendulumSystemNode>(integrator_type, integration_step);
+  // root.AddChild(std::move(pendulumnode));
 
 
-  //cloth simulation (r 0.05)
+  // cloth simulation (r 0.05)
   // std::unique_ptr<SceneNode> clothnode = make_unique<ClothSystemNode>(integrator_type, integration_step);
   // root.AddChild(std::move(clothnode));
+
+  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(5,5);
+  root.AddChild(std::move(gridnode));
 
 }
 

@@ -57,10 +57,10 @@ RM = /usr/local/Cellar/cmake/3.21.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sarahchieng/Desktop/6.837/assignment3
+CMAKE_SOURCE_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sarahchieng/Desktop/6.837/assignment3/build
+CMAKE_BINARY_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sarahchieng/Desktop/6.837/assignment3/build/CMakeFiles /Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2//CMakeFiles/progress.marks
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sarahchieng/Desktop/6.837/assignment3/build/CMakeFiles 0
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/CMakeFiles /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2//CMakeFiles/progress.marks
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/clean
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/preinstall
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/preinstall
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/rule:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
 .PHONY : external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ uninstall: external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(MAKE) $(MAKESILENT) -f external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build.make external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(MAKE) $(MAKESILENT) -f external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build.make external/src/glfw-3.3.2/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -199,6 +199,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sarahchieng/Desktop/6.837/assignment3/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

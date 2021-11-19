@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2/install_manifest.txt\"")
+if (NOT EXISTS "/Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2/install_manifest.txt\"")
 endif()
 
-file(READ "/Users/sarahchieng/Desktop/6.837/assignment3/build/external/src/glfw-3.3.2/install_manifest.txt" files)
+file(READ "/Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/external/src/glfw-3.3.2/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

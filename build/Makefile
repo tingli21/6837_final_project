@@ -57,10 +57,10 @@ RM = /usr/local/Cellar/cmake/3.21.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sarahchieng/Desktop/6.837/assignment3
+CMAKE_SOURCE_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sarahchieng/Desktop/6.837/assignment3/build
+CMAKE_BINARY_DIR = /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sarahchieng/Desktop/6.837/assignment3/build/CMakeFiles /Users/sarahchieng/Desktop/6.837/assignment3/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/CMakeFiles /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sarahchieng/Desktop/6.837/assignment3/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tingli/Documents/Ting/Classes/MEng/6.837/6837_final_project/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -223,6 +223,30 @@ assignment_code/assignment3/ClothSystemNode.s: assignment_code/assignment3/Cloth
 assignment_code/assignment3/ClothSystemNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/assignment_code/assignment3/ClothSystemNode.cpp.s
 .PHONY : assignment_code/assignment3/ClothSystemNode.cpp.s
+
+assignment_code/assignment3/MacGrid.o: assignment_code/assignment3/MacGrid.cpp.o
+.PHONY : assignment_code/assignment3/MacGrid.o
+
+# target to build an object file
+assignment_code/assignment3/MacGrid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/assignment_code/assignment3/MacGrid.cpp.o
+.PHONY : assignment_code/assignment3/MacGrid.cpp.o
+
+assignment_code/assignment3/MacGrid.i: assignment_code/assignment3/MacGrid.cpp.i
+.PHONY : assignment_code/assignment3/MacGrid.i
+
+# target to preprocess a source file
+assignment_code/assignment3/MacGrid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/assignment_code/assignment3/MacGrid.cpp.i
+.PHONY : assignment_code/assignment3/MacGrid.cpp.i
+
+assignment_code/assignment3/MacGrid.s: assignment_code/assignment3/MacGrid.cpp.s
+.PHONY : assignment_code/assignment3/MacGrid.s
+
+# target to generate assembly for a file
+assignment_code/assignment3/MacGrid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/assignment_code/assignment3/MacGrid.cpp.s
+.PHONY : assignment_code/assignment3/MacGrid.cpp.s
 
 assignment_code/assignment3/PendulumSystemNode.o: assignment_code/assignment3/PendulumSystemNode.cpp.o
 .PHONY : assignment_code/assignment3/PendulumSystemNode.o
@@ -1106,6 +1130,9 @@ help:
 	@echo "... assignment_code/assignment3/ClothSystemNode.o"
 	@echo "... assignment_code/assignment3/ClothSystemNode.i"
 	@echo "... assignment_code/assignment3/ClothSystemNode.s"
+	@echo "... assignment_code/assignment3/MacGrid.o"
+	@echo "... assignment_code/assignment3/MacGrid.i"
+	@echo "... assignment_code/assignment3/MacGrid.s"
 	@echo "... assignment_code/assignment3/PendulumSystemNode.o"
 	@echo "... assignment_code/assignment3/PendulumSystemNode.i"
 	@echo "... assignment_code/assignment3/PendulumSystemNode.s"
