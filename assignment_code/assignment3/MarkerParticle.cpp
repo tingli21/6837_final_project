@@ -13,7 +13,7 @@
 #include "glm/gtx/string_cast.hpp"
 
 namespace GLOO {
-    
+
 MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_y) {
     // make shader and mesh
     shader_ = std::make_shared<SimpleShader>();
@@ -33,7 +33,7 @@ MarkerParticle::MarkerParticle() {
     // make shader and mesh
     shader_ = std::make_shared<SimpleShader>();
     sphere_mesh_ = PrimitiveFactory::CreateSphere(0.02f, 25, 25);
-    
+
     pos_x_ = 0.f;
     pos_y_ = 0.f;
 
@@ -50,19 +50,19 @@ glm::vec3 MarkerParticle::GetPosition(){
 void MarkerParticle::Render(){
     //setup a sphere scene node and store pointer for later
     std::unique_ptr<SceneNode> sphere_node = make_unique<SceneNode>();
-    sphere_node->CreateComponent<ShadingComponent>(shader_); 
+    sphere_node->CreateComponent<ShadingComponent>(shader_);
     sphere_node->CreateComponent<RenderingComponent>(sphere_mesh_);
     sphere_node->GetTransform().SetPosition(GetPosition());
-    // particle_.push_back(sphere_node.get()); 
+    // particle_.push_back(sphere_node.get());
     AddChild(std::move(sphere_node));
 }
 
-// void MarkerParticle::advect(float dt)
-// {
-// 	for (auto it = _particles.begin(); it != _particles.end(); it++)
-// 	{
-// 		it->advect(dt);
-// 	}
-// }
+void MarkerParticle::advect(float dt){
+	// for (auto it = _particles.begin(); it != _particles.end(); it++){
+	// 	// it->advect(dt);
+	// }
+  pos_x_ += vel_x_ * dt;
+  pos_y_ += vel_y_ * dt;
+}
 
 }  // namespace GLOO

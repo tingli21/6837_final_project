@@ -36,17 +36,15 @@ SimulationApp::SimulationApp(const std::string& app_name,
   SceneNode& root = scene_->GetRootNode();
 
   //render the grid
-  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_);
+  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_, integration_step_);
   root.AddChild(std::move(gridnode));
 
   // //render the particles at the top
-  float increment = float(size_x_) / float(num_particles_);
+  float increment = float(size_x_-1) / float(num_particles_);
   for (int i = 0; i < num_particles_; i++){
-    float x_pos = increment * i;
+    float x_pos = 0.3*increment * i;
     std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(x_pos, 0.f, 0.f, 0.f);
-    // auto particle = MarkerParticle();
-
-  //   root.AddChild(std::move(particle));
+    root.AddChild(std::move(particle));
   }
 }
 

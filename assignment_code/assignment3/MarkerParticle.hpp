@@ -18,7 +18,7 @@ class MarkerParticle : public SceneNode {
     glm::vec3 GetPosition();
     void Render();
 
-    // void advect(float dt);
+    void advect(float dt);
 
   private:
     float pos_x_;

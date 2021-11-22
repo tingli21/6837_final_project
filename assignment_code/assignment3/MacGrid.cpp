@@ -10,10 +10,12 @@
 
 
 namespace GLOO {
-MacGrid::MacGrid(int size_x, int size_y){
+MacGrid::MacGrid(int size_x, int size_y, float step_size){
   // std::cout<<("hereEE");
   size_x_ = size_x;
   size_y_ = size_y;
+
+  step_size_ = step_size;
 
   sphere_mesh_ = PrimitiveFactory::CreateSphere(0.015f, 25, 25);
   shader_ = std::make_shared<PhongShader>();
@@ -55,7 +57,7 @@ MacGrid::MacGrid(int size_x, int size_y){
       PlotLineSegment(pos1,pos2);
     }
   }
-  
+
 }
 
 float MacGrid::interpolate(float x, float y){
@@ -101,6 +103,13 @@ void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
   rc.SetDrawMode(DrawMode::Lines);
 
   AddChild(std::move(line_node));
+}
+
+void MacGrid::Update(double delta_time){
+  // for (int i=0l i<=int(delta_time/step_size_); i++){
+  //   float step = step_size_ < delta_time ? step_size_ : delta_time;
+  //
+  // }
 }
 
 } // namespace GLOO
