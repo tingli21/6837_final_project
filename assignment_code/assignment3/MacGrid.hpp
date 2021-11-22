@@ -15,6 +15,7 @@ class MacGrid : public SceneNode {
 public:
   MacGrid(int size_x, int size_y);
   void PlotLineSegment(glm::vec3 p1, glm::vec3 p2);
+  void Update(double delta_time) override;
   // int IndexOf(int i, int j);
   int IndexOf(int i, int j) const {return size_x_ * j + i;}
 

@@ -103,4 +103,11 @@ void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
   AddChild(std::move(line_node));
 }
 
+void MacGrid::Update(double delta_time){
+  // for (int i=0l i<=int(delta_time/step_size_); i++){
+  //   float step = step_size_ < delta_time ? step_size_ : delta_time;
+  //
+  // }
+}
+
 } // namespace GLOO
