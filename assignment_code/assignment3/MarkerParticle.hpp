@@ -28,7 +28,7 @@ class MarkerParticle : public SceneNode {
 
     std::shared_ptr<VertexObject> sphere_mesh_;
     std::shared_ptr<ShaderProgram> shader_;
-    // std::shared_ptr<Material> material;
+    std::shared_ptr<Material> material_;
 
     State state_;
 };

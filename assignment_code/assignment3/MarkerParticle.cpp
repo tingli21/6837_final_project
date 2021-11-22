@@ -13,11 +13,13 @@
 #include "glm/gtx/string_cast.hpp"
 
 namespace GLOO {
-    
+
 MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_y) {
     // make shader and mesh
     shader_ = std::make_shared<SimpleShader>();
     sphere_mesh_ = PrimitiveFactory::CreateSphere(0.02f, 25, 25);
+    glm::vec3 color(0.5f, 0.5f, 0.5f);
+    material_ = std::make_shared<Material>(color, color, color, 0);
 
     pos_x_ = pos_x;
     pos_y_ = pos_y;
@@ -53,6 +55,7 @@ void MarkerParticle::Render(){
     sphere_node->CreateComponent<ShadingComponent>(shader_); 
     sphere_node->CreateComponent<RenderingComponent>(sphere_mesh_);
     sphere_node->GetTransform().SetPosition(GetPosition());
+    sphere_node->CreateComponent<MaterialComponent>(material_);
     // particle_.push_back(sphere_node.get()); 
     AddChild(std::move(sphere_node));
 }
