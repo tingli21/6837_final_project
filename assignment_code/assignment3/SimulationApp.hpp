@@ -19,10 +19,10 @@ class SimulationApp : public Application {
   IntegratorType integrator_type_;
   float integration_step_;
 
-  float num_particles_ = 20;
+  float num_particles_ = 100;
 
-  int size_x_ = 5;
-  int size_y_ = 5;
+  int size_x_ = 20;
+  int size_y_ = 20;
 
   //list of vectors 
   // std::vector<MarkerParticle> particles_;
