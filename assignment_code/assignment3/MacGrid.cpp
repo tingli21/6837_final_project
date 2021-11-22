@@ -11,6 +11,7 @@
 
 namespace GLOO {
 MacGrid::MacGrid(int size_x, int size_y){
+  // std::cout<<("hereEE");
   size_x_ = size_x;
   size_y_ = size_y;
 
@@ -36,6 +37,25 @@ MacGrid::MacGrid(int size_x, int size_y){
   }
 
   // draw line segments between grid points
+  for (int j=0; j<size_x_-1; j++){
+    for (int i=0; i<size_y_; i++){
+      // std::cout<<("hereEE");
+      glm::vec3 pos1(0.3*j, -0.3*i, 0);
+      glm::vec3 pos2(0.3*(j+1), -0.3*i, 0);
+
+      PlotLineSegment(pos1,pos2);
+    }
+  }
+
+  for (int j=0; j<size_x_; j++){
+    for (int i=0; i<size_y_-1; i++){
+      glm::vec3 pos1(0.3*j, -0.3*i, 0);
+      glm::vec3 pos2(0.3*j, -0.3*(i+1), 0);
+
+      PlotLineSegment(pos1,pos2);
+    }
+  }
+  
 }
 
 float MacGrid::interpolate(float x, float y){
@@ -57,9 +77,11 @@ float MacGrid::interpolate(float x, float y){
 }
 
 void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
+  // std::cout<<("here");
   auto line = std::make_shared<VertexObject>();
 
   auto positions = make_unique<PositionArray>();
+
   positions->push_back(p1);
   positions->push_back(p2);
 
@@ -78,11 +100,38 @@ void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
   auto& rc = line_node->CreateComponent<RenderingComponent>(line);
   rc.SetDrawMode(DrawMode::Lines);
 
-  glm::vec3 color(1.f, 1.f, 1.f);
-  auto material = std::make_shared<Material>(color, color, color, 0);
-  line_node->CreateComponent<MaterialComponent>(material);
+  // glm::vec3 color(1.f, 1.f, 1.f);
+  // auto material = std::make_shared<Material>(color, color, color, 0);
+  // line_node->CreateComponent<MaterialComponent>(material);
 
   AddChild(std::move(line_node));
 }
+
+// void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
+//     std::unique_ptr<SceneNode> springs_node = make_unique<SceneNode>();
+//     springs_node->CreateComponent<ShadingComponent>(shader_); 
+
+//     std::unique_ptr<PositionArray> positions = make_unique<PositionArray>();
+//     positions->push_back(p1);
+//     positions->push_back(p2);
+    
+//     std::unique_ptr<IndexArray> indices = make_unique<IndexArray>();
+//     indices->push_back(0);
+//     indices->push_back(1);
+//     indices->push_back(1);
+//     indices->push_back(2);
+//     indices->push_back(2);
+//     indices->push_back(3);
+
+//     auto spring_mesh_ = std::make_shared<VertexObject>();
+//     spring_mesh_->UpdatePositions(std::move(positions));
+//     spring_mesh_->UpdateIndices(std::move(indices));
+    
+//     auto& rc = springs_node->CreateComponent<RenderingComponent>(spring_mesh_);
+//     rc.SetDrawMode(DrawMode::Lines);
+
+//     AddChild(std::move(springs_node)); 
+
+// }
 
 } // namespace GLOO

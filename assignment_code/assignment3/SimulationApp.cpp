@@ -18,6 +18,7 @@
 #include "PendulumSystemNode.hpp"
 #include "ClothSystemNode.hpp"
 #include "MacGrid.hpp"
+#include "MarkerParticle.hpp"
 
 
 namespace GLOO {
@@ -34,23 +35,16 @@ SimulationApp::SimulationApp(const std::string& app_name,
   // one to grab root node
   SceneNode& root = scene_->GetRootNode();
 
-  //COMMENT OUT THE ONE YOU WANT TO RUN
-
-  //simple simulation (e 0.05)
-  // std::unique_ptr<SceneNode> simplenode = make_unique<SimpleSimulationNode>(integrator_type, integration_step);
-  // root.AddChild(std::move(simplenode));
-
-  //pendulum simulation (e 0.05)
-  // std::unique_ptr<SceneNode> pendulumnode = make_unique<PendulumSystemNode>(integrator_type, integration_step);
-  // root.AddChild(std::move(pendulumnode));
-
-
-  // cloth simulation (r 0.05)
-  // std::unique_ptr<SceneNode> clothnode = make_unique<ClothSystemNode>(integrator_type, integration_step);
-  // root.AddChild(std::move(clothnode));
-
-  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(5,5);
+  //render the grid
+  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_);
   root.AddChild(std::move(gridnode));
+
+  //render the particles at the top
+  float increment = float(size_x_) / float(num_particles_);
+  for (int i = 0; i < num_particles_; i++){
+    std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(float(increment * i), 0.f, 0.f, 0.f);
+    root.AddChild(std::move(particle));
+  }
 
 }
 
