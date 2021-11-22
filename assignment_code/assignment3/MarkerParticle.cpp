@@ -1,3 +1,5 @@
+#include "MarkerParticle.hpp"
+
 #include <fstream>
 
 #include "gloo/utils.hpp"
@@ -10,9 +12,8 @@
 #include "gloo/debug/PrimitiveFactory.hpp"
 #include "glm/gtx/string_cast.hpp"
 
-#include "MarkerParticle.hpp"
-
 namespace GLOO {
+    
 MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_y) {
     // make shader and mesh
     shader_ = std::make_shared<SimpleShader>();
@@ -25,7 +26,7 @@ MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_
     vel_y_ = vel_y;
     state_ = State::Liquid;
 
-    // Render();
+    Render();
 }
 
 MarkerParticle::MarkerParticle() {
@@ -39,7 +40,7 @@ MarkerParticle::MarkerParticle() {
     vel_x_ = 0.f;
     vel_y_ = 0.f;
     state_ = State::Liquid; //should we change the default
-    // Render();
+    Render();
 }
 
 glm::vec3 MarkerParticle::GetPosition(){

@@ -12,8 +12,8 @@ enum class State { Solid, Gas, Liquid };
 
 class MarkerParticle : public SceneNode {
   public:
-    MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_y);
     MarkerParticle();
+    MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_y);
 
     glm::vec3 GetPosition();
     void Render();
@@ -31,9 +31,7 @@ class MarkerParticle : public SceneNode {
     // std::shared_ptr<Material> material;
 
     State state_;
-    
 };
-
 }  // namespace GLOO
 
 #endif

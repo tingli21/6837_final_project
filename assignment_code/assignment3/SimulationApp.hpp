@@ -4,7 +4,7 @@
 #include "gloo/Application.hpp"
 
 #include "IntegratorType.hpp"
-#include "MarkerParticle.hpp"
+// #include "MarkerParticle.hpp"
 
 namespace GLOO {
 class SimulationApp : public Application {
@@ -25,7 +25,7 @@ class SimulationApp : public Application {
   int size_y_ = 5;
 
   //list of vectors 
-  std::vector<MarkerParticle> particles_;
+  // std::vector<MarkerParticle> particles_;
 };
 }  // namespace GLOO
 

@@ -100,38 +100,7 @@ void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
   auto& rc = line_node->CreateComponent<RenderingComponent>(line);
   rc.SetDrawMode(DrawMode::Lines);
 
-  // glm::vec3 color(1.f, 1.f, 1.f);
-  // auto material = std::make_shared<Material>(color, color, color, 0);
-  // line_node->CreateComponent<MaterialComponent>(material);
-
   AddChild(std::move(line_node));
 }
-
-// void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
-//     std::unique_ptr<SceneNode> springs_node = make_unique<SceneNode>();
-//     springs_node->CreateComponent<ShadingComponent>(shader_); 
-
-//     std::unique_ptr<PositionArray> positions = make_unique<PositionArray>();
-//     positions->push_back(p1);
-//     positions->push_back(p2);
-    
-//     std::unique_ptr<IndexArray> indices = make_unique<IndexArray>();
-//     indices->push_back(0);
-//     indices->push_back(1);
-//     indices->push_back(1);
-//     indices->push_back(2);
-//     indices->push_back(2);
-//     indices->push_back(3);
-
-//     auto spring_mesh_ = std::make_shared<VertexObject>();
-//     spring_mesh_->UpdatePositions(std::move(positions));
-//     spring_mesh_->UpdateIndices(std::move(indices));
-    
-//     auto& rc = springs_node->CreateComponent<RenderingComponent>(spring_mesh_);
-//     rc.SetDrawMode(DrawMode::Lines);
-
-//     AddChild(std::move(springs_node)); 
-
-// }
 
 } // namespace GLOO

@@ -14,9 +14,9 @@
 #include "gloo/cameras/ArcBallCameraNode.hpp"
 #include "gloo/debug/AxisNode.hpp"
 
-#include "SimpleSimulationNode.hpp"
-#include "PendulumSystemNode.hpp"
-#include "ClothSystemNode.hpp"
+// #include "SimpleSimulationNode.hpp"
+// #include "PendulumSystemNode.hpp"
+// #include "ClothSystemNode.hpp"
 #include "MacGrid.hpp"
 #include "MarkerParticle.hpp"
 
@@ -39,13 +39,15 @@ SimulationApp::SimulationApp(const std::string& app_name,
   std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_);
   root.AddChild(std::move(gridnode));
 
-  //render the particles at the top
+  // //render the particles at the top
   float increment = float(size_x_) / float(num_particles_);
   for (int i = 0; i < num_particles_; i++){
-    std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(float(increment * i), 0.f, 0.f, 0.f);
-    root.AddChild(std::move(particle));
-  }
+    float x_pos = increment * i;
+    std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(x_pos, 0.f, 0.f, 0.f);
+    // auto particle = MarkerParticle();
 
+  //   root.AddChild(std::move(particle));
+  }
 }
 
 void SimulationApp::SetupScene() {
