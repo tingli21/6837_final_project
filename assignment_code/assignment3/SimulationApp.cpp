@@ -46,7 +46,7 @@ SimulationApp::SimulationApp(const std::string& app_name,
     std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(x_pos, 0.f, 0.f, 0.f);
     // auto particle = MarkerParticle();
 
-  //   root.AddChild(std::move(particle));
+    root.AddChild(std::move(particle));
   }
 }
 

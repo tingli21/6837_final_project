@@ -8,7 +8,7 @@
 
 namespace GLOO {
 
-enum class State { Solid, Gas, Liquid };
+enum class State { Solid, Air, Liquid };
 
 class MarkerParticle : public SceneNode {
   public:
