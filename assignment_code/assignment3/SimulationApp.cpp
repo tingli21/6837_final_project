@@ -19,6 +19,7 @@
 // #include "ClothSystemNode.hpp"
 #include "MacGrid.hpp"
 #include "MarkerParticle.hpp"
+#include "GridFluidSystem.hpp"
 
 
 namespace GLOO {
@@ -35,19 +36,13 @@ SimulationApp::SimulationApp(const std::string& app_name,
   // one to grab root node
   SceneNode& root = scene_->GetRootNode();
 
-  //render the grid
-  std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_, integration_step_);
-  root.AddChild(std::move(gridnode));
+  // render the grid - currently rendered in GridFluidSystem
+  // std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_, integration_step_);
+  // root.AddChild(std::move(gridnode));
 
-  // //render the particles at the top
-  float increment = float(size_x_-1) / float(num_particles_);
-  for (int i = 0; i < num_particles_; i++){
-    float x_pos = 0.3*increment * i;
-    std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(x_pos, 0.f, 0.f, 0.f);
-    // auto particle = MarkerParticle();
-
-    root.AddChild(std::move(particle));
-  }
+  std::unique_ptr<SceneNode> gridsystem = make_unique<GridFluidSystem>(size_x_, size_y_, integration_step_, num_particles_);
+  root.AddChild(std::move(gridsystem));
+  
 }
 
 void SimulationApp::SetupScene() {

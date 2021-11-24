@@ -19,13 +19,11 @@ class SimulationApp : public Application {
   IntegratorType integrator_type_;
   float integration_step_;
 
-  float num_particles_ = 100;
+  float num_particles_ = 20;
 
-  int size_x_ = 20;
-  int size_y_ = 20;
+  int size_x_ = 10;
+  int size_y_ = 10;
 
-  //list of vectors
-  // std::vector<MarkerParticle> particles_;
 };
 }  // namespace GLOO
 
