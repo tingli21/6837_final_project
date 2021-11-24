@@ -26,7 +26,7 @@ MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_
 
     vel_x_ = vel_x;
     vel_y_ = vel_y;
-    state_ = State::Liquid;
+    // state_ = State::Liquid;
 
     Render();
 }
@@ -41,7 +41,7 @@ MarkerParticle::MarkerParticle() {
 
     vel_x_ = 0.f;
     vel_y_ = 0.f;
-    state_ = State::Liquid; //should we change the default
+    // state_ = State::Liquid; //should we change the default
     Render();
 }
 
@@ -51,21 +51,19 @@ glm::vec3 MarkerParticle::GetPosition(){
 
 void MarkerParticle::Render(){
     //setup a sphere scene node and store pointer for later
-    std::unique_ptr<SceneNode> sphere_node = make_unique<SceneNode>();
+    auto sphere_node = make_unique<SceneNode>();
     sphere_node->CreateComponent<ShadingComponent>(shader_);
     sphere_node->CreateComponent<RenderingComponent>(sphere_mesh_);
     sphere_node->GetTransform().SetPosition(GetPosition());
     sphere_node->CreateComponent<MaterialComponent>(material_);
-    // particle_.push_back(sphere_node.get());
+    particle_ptr_ = sphere_node.get();
     AddChild(std::move(sphere_node));
 }
 
 void MarkerParticle::advect(float dt){
-	// for (auto it = _particles.begin(); it != _particles.end(); it++){
-	// 	// it->advect(dt);
-	// }
   pos_x_ += vel_x_ * dt;
   pos_y_ += vel_y_ * dt;
+  particle_ptr_->GetTransform().SetPosition(GetPosition());
 }
 
 }  // namespace GLOO

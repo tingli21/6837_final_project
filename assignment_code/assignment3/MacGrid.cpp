@@ -17,7 +17,11 @@ MacGrid::MacGrid(int size_x, int size_y){
   sphere_mesh_ = PrimitiveFactory::CreateSphere(0.015f, 25, 25);
   shader_ = std::make_shared<PhongShader>();
   glm::vec3 color(1.f, 1.f, 1.f);
+  glm::vec3 color_border(1.f, 0.f, 0.f);
   material = std::make_shared<Material>(color, color, color, 0);
+  material_border = std::make_shared<Material>(color_border, color_border, color_border, 0);
+
+  InitCellTypes();
 
   for (int j=0; j<size_x_; j++){
     for (int i=0; i<size_y_; i++){
@@ -31,7 +35,14 @@ MacGrid::MacGrid(int size_x, int size_y){
       grid_vertices[IndexOf(i,j)]->GetTransform().SetPosition(pos);
       grid_vertices[IndexOf(i,j)]->CreateComponent<ShadingComponent>(shader_);
       grid_vertices[IndexOf(i,j)]->CreateComponent<RenderingComponent>(sphere_mesh_);
-      grid_vertices[IndexOf(i,j)]->CreateComponent<MaterialComponent>(material);
+
+      // make border red, and other nodes white
+      if (j==0 || j==size_x_-1 || i==size_y_-1){
+        grid_vertices[IndexOf(i,j)]->CreateComponent<MaterialComponent>(material_border);
+      }
+      else {
+        grid_vertices[IndexOf(i,j)]->CreateComponent<MaterialComponent>(material);
+      }
     }
   }
 
@@ -99,5 +110,21 @@ void MacGrid::PlotLineSegment(glm::vec3 p1, glm::vec3 p2){
 
   AddChild(std::move(line_node));
 }
+
+void MacGrid::InitCellTypes(){
+  // Set all cells to solid
+  for (int j=0; j<size_x_; j++){
+    for (int i=0; i<size_y_; i++){
+      cell_types.push_back(CellType::Solid);
+    }
+  }
+  // Set center cells to air
+  for (int j=0; j<size_x_-1; j++){
+    for (int i=1; i<size_y_-1; i++){
+      cell_types[IndexOf(i,j)] = CellType::Air;
+    }
+  }
+}
+
 
 } // namespace GLOO

@@ -8,8 +8,6 @@
 
 namespace GLOO {
 
-enum class State { Solid, Air, Liquid };
-
 class MarkerParticle : public SceneNode {
   public:
     MarkerParticle();
@@ -17,7 +15,6 @@ class MarkerParticle : public SceneNode {
 
     glm::vec3 GetPosition();
     void Render();
-
     void advect(float dt);
 
   private:
@@ -29,8 +26,9 @@ class MarkerParticle : public SceneNode {
     std::shared_ptr<VertexObject> sphere_mesh_;
     std::shared_ptr<ShaderProgram> shader_;
     std::shared_ptr<Material> material_;
+    SceneNode* particle_ptr_;
 
-    State state_;
+    // State state_;
 };
 }  // namespace GLOO
 
