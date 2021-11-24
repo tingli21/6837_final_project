@@ -44,6 +44,8 @@ SimulationApp::SimulationApp(const std::string& app_name,
   for (int i = 0; i < num_particles_; i++){
     float x_pos = 0.3*increment * i;
     std::unique_ptr<SceneNode> particle = make_unique<MarkerParticle>(x_pos, 0.f, 0.f, 0.f);
+    // auto particle = MarkerParticle();
+
     root.AddChild(std::move(particle));
   }
 }
