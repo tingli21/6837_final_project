@@ -19,10 +19,10 @@ class SimulationApp : public Application {
   IntegratorType integrator_type_;
   float integration_step_;
 
-  float num_particles_ = 20;
+  float num_particles_ = 300;
 
-  int size_x_ = 10;
-  int size_y_ = 10;
+  int size_x_ = 30;
+  int size_y_ = 30;
 
 };
 }  // namespace GLOO

@@ -5,6 +5,7 @@
 #include "gloo/VertexObject.hpp"
 #include "gloo/shaders/ShaderProgram.hpp"
 #include "gloo/components/MaterialComponent.hpp"
+#include "MarkerParticle.hpp"
 
 
 namespace GLOO {
@@ -27,6 +28,7 @@ public:
     return cell_types[IndexOf(i,j)];
   }
   void SetCellType(int i, int j, CellType cell_type){cell_types[IndexOf(i,j)] = cell_type;}
+  void UpdateCellTypes(std::vector<MarkerParticle*> particles);
 
   // getter functions
   float vel_x(int i, int j) const {return velocities[IndexOf(i,j)] + velocities[IndexOf(i+1,j)]/2.f;}

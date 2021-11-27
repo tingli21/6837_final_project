@@ -1,4 +1,5 @@
 #include "MacGrid.hpp"
+#include "MarkerParticle.hpp"
 #include "gloo/debug/PrimitiveFactory.hpp"
 #include "gloo/components/RenderingComponent.hpp"
 #include "gloo/components/ShadingComponent.hpp"
@@ -30,7 +31,7 @@ MacGrid::MacGrid(int size_x, int size_y){
       AddChild(std::move(pt));
       grid_vertices.push_back(node_ptr);
 
-      glm::vec3 pos(0.3*j, -0.3*i, 0);
+      glm::vec3 pos(j, -i, 0);
 
       grid_vertices[IndexOf(i,j)]->GetTransform().SetPosition(pos);
       grid_vertices[IndexOf(i,j)]->CreateComponent<ShadingComponent>(shader_);
@@ -46,20 +47,21 @@ MacGrid::MacGrid(int size_x, int size_y){
     }
   }
 
-  // draw line segments between grid points
-  for (int j=0; j<size_x_-1; j++){
-    for (int i=0; i<size_y_; i++){
-      glm::vec3 pos1(0.3*j, -0.3*i, 0);
-      glm::vec3 pos2(0.3*(j+1), -0.3*i, 0);
+  // draw line segments between grid points: horisontal
+  for (int j=0; j<size_x_; j++){
+    for (int i=0; i<size_y_+1; i++){
+      glm::vec3 pos1(j, -i, 0);
+      glm::vec3 pos2((j+1), -i, 0);
 
       PlotLineSegment(pos1,pos2);
     }
   }
 
-  for (int j=0; j<size_x_; j++){
-    for (int i=0; i<size_y_-1; i++){
-      glm::vec3 pos1(0.3*j, -0.3*i, 0);
-      glm::vec3 pos2(0.3*j, -0.3*(i+1), 0);
+  //vertical
+  for (int j=0; j<size_x_+1; j++){
+    for (int i=0; i<size_y_; i++){
+      glm::vec3 pos1(j, -i, 0);
+      glm::vec3 pos2(j, -(i+1), 0);
 
       PlotLineSegment(pos1,pos2);
     }
@@ -123,6 +125,16 @@ void MacGrid::InitCellTypes(){
     for (int i=1; i<size_y_-1; i++){
       cell_types[IndexOf(i,j)] = CellType::Air;
     }
+  }
+}
+
+void MacGrid::UpdateCellTypes(std::vector<MarkerParticle*> particles){
+  //go through the particles
+  for(int i = 0; i < particles.size(); i++){
+    glm::vec3 pos = particles[i]->GetPosition();
+    int x = pos[0];
+    int y = pos[1];
+    cell_types[IndexOf(x,y)] = CellType::Liquid;
   }
 }
 

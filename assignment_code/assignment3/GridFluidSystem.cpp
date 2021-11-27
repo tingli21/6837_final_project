@@ -28,9 +28,9 @@ GridFluidSystem::GridFluidSystem(int size_x, int size_y, float step_size, int nu
 }
 
 void GridFluidSystem::MakeMarkerParticles(){
-  float increment = float(size_x_-1) / float(num_particles_);
-  for (int i = 0; i < num_particles_; i++){
-    float x_pos = 0.3*increment * i;
+  float increment = float(size_x_) / float(num_particles_-1);
+  for (float i = 0.0; i < num_particles_; i++){
+    float x_pos = increment * i;
     auto particle = make_unique<MarkerParticle>(x_pos, -0.5, 0.1f, -0.1f);
     particles_.push_back(particle.get());
     AddChild(std::move(particle));
@@ -39,6 +39,7 @@ void GridFluidSystem::MakeMarkerParticles(){
 }
 
 void GridFluidSystem::Update(double delta_time){
+  mac_grid_ptr->UpdateCellTypes(particles_);
 
   for (int i=0; i<=int(delta_time/step_size_); i++){
     float step = step_size_ < delta_time ? step_size_ : delta_time;
@@ -46,8 +47,8 @@ void GridFluidSystem::Update(double delta_time){
     // advect all marker particles and ensure outside obstacles
     for (int n=0; n<particles_.size();n++) {
       particles_[n]->advect(step);
-      int x = particles_[n]->GetPosition()[0]/0.3;
-      int y = particles_[n]->GetPosition()[1]/0.3;
+      float x = particles_[n]->GetPosition()[0];
+      float y = particles_[n]->GetPosition()[1];
 
       if (mac_grid_ptr->GetCellType(x,y)==CellType::Solid) {
         std::cout << x << ", " << y << std::endl;

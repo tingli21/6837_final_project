@@ -26,7 +26,6 @@ MarkerParticle::MarkerParticle(float pos_x, float pos_y, float vel_x, float vel_
 
     vel_x_ = vel_x;
     vel_y_ = vel_y;
-    // state_ = State::Liquid;
 
     Render();
 }
@@ -41,7 +40,7 @@ MarkerParticle::MarkerParticle() {
 
     vel_x_ = 0.f;
     vel_y_ = 0.f;
-    // state_ = State::Liquid; //should we change the default
+
     Render();
 }
 
