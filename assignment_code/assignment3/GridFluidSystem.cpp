@@ -44,6 +44,8 @@ void GridFluidSystem::Update(double delta_time){
   for (int i=0; i<=int(delta_time/step_size_); i++){
     float step = step_size_ < delta_time ? step_size_ : delta_time;
 
+    //TODO: add the integrator (look at previous assignment)
+
     // advect all marker particles and ensure outside obstacles
     for (int n=0; n<particles_.size();n++) {
       particles_[n]->advect(step);

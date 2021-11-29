@@ -25,9 +25,11 @@ private:
   int size_y_;
   int num_particles_;
   float step_size_;
+  float water_density_; //TODO
   MacGrid* mac_grid_ptr;
 
   //list of vectors
+  std::vector<MarkerParticle*> num_particles_; //TODO
   std::vector<MarkerParticle*> particles_;
 
 };
