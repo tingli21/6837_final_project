@@ -9,6 +9,7 @@
 #include "GridFluidSystem.hpp"
 #include "MacGrid.hpp"
 #include "MarkerParticle.hpp"
+#include <math.h> 
 
 
 namespace GLOO {
@@ -21,6 +22,7 @@ GridFluidSystem::GridFluidSystem(int size_x, int size_y, float step_size, int nu
   size_y_ = size_y;
   step_size_ = step_size;
   num_particles_ = num_particles;
+  water_density_ = 1000.f;
 
   //render marker particles at the top
   MakeMarkerParticles();
@@ -60,6 +62,14 @@ void GridFluidSystem::Update(double delta_time){
         //std::cout << particles_[n]->GetPosition()[0] << std::endl;
       }
     }
+  }
+}
+
+void GridFluidSystem::CountParticles(){
+  for (int n=0; n<particles_.size();n++) {
+    float x = particles_[n]->GetPosition()[0];
+    float y = particles_[n]->GetPosition()[1];
+    particle_count_[IndexOf(floor(x),floor(y))] = particle_count_[IndexOf(floor(x),floor(y))] + 1;
   }
 }
 

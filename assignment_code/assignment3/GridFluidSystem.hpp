@@ -17,6 +17,7 @@ public:
   GridFluidSystem(int size_x, int size_y, float step_size, int num_particles);
   void MakeMarkerParticles();
   void Update(double delta_time) override;
+  void CountParticles(); //calclates the number of particles at each point of the grid
 
   int IndexOf(int i, int j) const {return size_x_ * j + i;}
 
@@ -25,12 +26,12 @@ private:
   int size_y_;
   int num_particles_;
   float step_size_;
-  float water_density_; //TODO
+  float water_density_;
   MacGrid* mac_grid_ptr;
 
   //list of vectors
-  std::vector<MarkerParticle*> num_particles_; //TODO
-  std::vector<MarkerParticle*> particles_;
+  std::vector<MarkerParticle*> particle_count_; //number of particles in each grid cell n = size_x * size_y
+  std::vector<MarkerParticle*> particles_; 
 
 };
 }  // namespace GLOO
