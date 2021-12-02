@@ -14,9 +14,6 @@
 #include "gloo/cameras/ArcBallCameraNode.hpp"
 #include "gloo/debug/AxisNode.hpp"
 
-// #include "SimpleSimulationNode.hpp"
-// #include "PendulumSystemNode.hpp"
-// #include "ClothSystemNode.hpp"
 #include "MacGrid.hpp"
 #include "MarkerParticle.hpp"
 #include "GridFluidSystem.hpp"
