@@ -5,6 +5,7 @@
 namespace GLOO {
 
 Fluid::Fluid(){
+  // std::cout << num_cells << std::endl;
   for (int i=0; i<num_cells; i++){
     U0_y.push_back(0.f);
     U0_x.push_back(0.f);
@@ -13,6 +14,7 @@ Fluid::Fluid(){
     S0.push_back(0.f);
     S1.push_back(0.f);
   }
+  // std::cout << U0_y.size() << std::endl;
 }
 
 void Fluid::swap_grids() {
@@ -23,16 +25,9 @@ void Fluid::swap_grids() {
 }
 
 void Fluid::step() {
-  std::cout << "hi4.1" << std::endl;
-  // U1_y.push_back(1.f);
-  std::cout << "hi4.1.1.1.1" << std::endl;
-  std::cout << U1_y.size() << std::endl;
   v_step(U1_y, U1_x, U0_y, U0_x);
-  std::cout << "hi4.2" << std::endl;
   s_step(S1, S0, U0_y, U0_x);
-  std::cout << "hi4.3" << std::endl;
   swap_grids();
-  std::cout << "hi4.4" << std::endl;
 }
 
 void Fluid::add_U_y_force_at(int y, int x, float force) {
@@ -66,10 +61,8 @@ float Fluid::S_at(int y, int x) {
 }
 
 void Fluid::v_step(std::vector<float> U1_y, std::vector<float> U1_x, std::vector<float> U0_y, std::vector<float> U0_x) {
-  std::cout << "hi4.1.1" << std::endl;
   set_boundary_values(U1_y, 1);
   set_boundary_values(U1_x, 1);
-  std::cout << "hi4.1.2" << std::endl;
 
   // diffuse
   if (VISCOSITY > 0.f) {
@@ -78,7 +71,6 @@ void Fluid::v_step(std::vector<float> U1_y, std::vector<float> U1_x, std::vector
     diffuse(U1_y, U0_y, VISCOSITY, 1);
     diffuse(U1_x, U0_x, VISCOSITY, 2);
   }
-  std::cout << "hi4.1.3" << std::endl;
   // pressure correction 1
   project(U0_y, U0_x, U1_y, U1_x);
 

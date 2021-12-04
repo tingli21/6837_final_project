@@ -28,29 +28,28 @@ SimulationApp::SimulationApp(const std::string& app_name,
   // TODO: use integrator type and step to create integrators;
   // the lines below exist only to suppress compiler warnings.
 
-  SceneNode& root = scene_->GetRootNode();
-  std::cout << "hi" << std::endl;
+  // SceneNode& root = scene_->GetRootNode();
   auto fluid = make_unique<Fluid>();
-  root.AddChild(std::move(fluid));
-  std::cout << "hi2" << std::endl;
+  // root.AddChild(std::move(fluid));
 
   float add_amount = 0.3f * fmax(CELLS_X, CELLS_Y); //ADD_AMT_INIT=0.3f
   float cr = 0.f;
   float cg = 0.f;
   float cb = 0.f;
 
-  fluid->add_U_y_force_at(0, 0, 10.f * 10); // FORCE_SCALE = 10.f
-  fluid->add_U_x_force_at(0, 0, 10.f * 10);
-  fluid->add_source_at(0, 0, add_amount);
-  std::cout << "hi3" << std::endl;
+  for (int y=0; y<CELLS_Y; y++){
+    for (int x=0; x<CELLS_X; x++){
+      fluid->add_U_y_force_at(y, x, 10.f * 20); // FORCE_SCALE = 10.f
+      fluid->add_U_x_force_at(y, x, 10.f * 20);
+      fluid->add_source_at(y, x, add_amount);
+    }
+  }
+
   for (int i=0; i<24; i++){
-    std::cout << "hi4" << std::endl;
     fluid->step();
-    std::cout << "hi5" << std::endl;
     Image image(CELLS_X, CELLS_Y);
     for (size_t y = 0; y < CELLS_Y; y++) {
       for (size_t x = 0; x < CELLS_X; x++) {
-        std::cout << "hi6" << std::endl;
         cr = fluid->S_at(y, x);
         cg = fluid->S_at(y, x);
         cb = fluid->S_at(y, x);

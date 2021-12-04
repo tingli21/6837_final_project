@@ -14,14 +14,14 @@ namespace GLOO {
 class Fluid : public SceneNode {
 private:
   // velocity grids
-  std::vector<float> U0_y; //(num_cells, 0.f);
-  std::vector<float> U0_x; //(num_cells, 0.f);
-  std::vector<float> U1_y; //(num_cells, 0.f);
-  std::vector<float> U1_x; //(num_cells, 0.f);
+  std::vector<float> U0_y;
+  std::vector<float> U0_x;
+  std::vector<float> U1_y;
+  std::vector<float> U1_x;
 
   // scalar grids - density values
-  std::vector<float> S0; //(num_cells, 0.f);
-  std::vector<float> S1; //(num_cells, 0.f);
+  std::vector<float> S0;
+  std::vector<float> S1;
 
   void swap_grids();
 
