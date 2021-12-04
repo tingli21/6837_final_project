@@ -37,6 +37,7 @@ SimulationApp::SimulationApp(const std::string& app_name,
   float cg = 0.f;
   float cb = 0.f;
 
+  //TODO: NOT WORKING (add vector field/forces)
   for (int y=0; y<CELLS_Y; y++){
     for (int x=0; x<CELLS_X; x++){
       fluid->add_U_y_force_at(y, x, 10.f * 20); // FORCE_SCALE = 10.f
@@ -45,6 +46,7 @@ SimulationApp::SimulationApp(const std::string& app_name,
     }
   }
 
+  //TODO: making 24 images and saving them
   for (int i=0; i<24; i++){
     fluid->step();
     Image image(CELLS_X, CELLS_Y);
