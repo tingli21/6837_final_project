@@ -14,35 +14,51 @@
 #include "gloo/cameras/ArcBallCameraNode.hpp"
 #include "gloo/debug/AxisNode.hpp"
 
-// #include "SimpleSimulationNode.hpp"
-// #include "PendulumSystemNode.hpp"
-// #include "ClothSystemNode.hpp"
-#include "MacGrid.hpp"
-#include "MarkerParticle.hpp"
-#include "GridFluidSystem.hpp"
+#include "Fluid.hpp"
+#include "gloo/Image.hpp"
+#include <string>
+#include "Parameters.hpp"
 
 
 namespace GLOO {
 SimulationApp::SimulationApp(const std::string& app_name,
-                             glm::ivec2 window_size,
-                             IntegratorType integrator_type,
-                             float integration_step)
-    : Application(app_name, window_size),
-      integrator_type_(integrator_type),
-      integration_step_(integration_step) {
+                             glm::ivec2 window_size)
+    : Application(app_name, window_size) {
   // TODO: use integrator type and step to create integrators;
   // the lines below exist only to suppress compiler warnings.
 
-  // one to grab root node
   SceneNode& root = scene_->GetRootNode();
+  std::cout << "hi" << std::endl;
+  auto fluid = make_unique<Fluid>();
+  root.AddChild(std::move(fluid));
+  std::cout << "hi2" << std::endl;
 
-  // render the grid - currently rendered in GridFluidSystem
-  // std::unique_ptr<SceneNode> gridnode = make_unique<MacGrid>(size_x_,size_y_, integration_step_);
-  // root.AddChild(std::move(gridnode));
+  float add_amount = 0.3f * fmax(CELLS_X, CELLS_Y); //ADD_AMT_INIT=0.3f
+  float cr = 0.f;
+  float cg = 0.f;
+  float cb = 0.f;
 
-  std::unique_ptr<SceneNode> gridsystem = make_unique<GridFluidSystem>(size_x_, size_y_, integration_step_, num_particles_);
-  root.AddChild(std::move(gridsystem));
-  
+  fluid->add_U_y_force_at(0, 0, 10.f * 10); // FORCE_SCALE = 10.f
+  fluid->add_U_x_force_at(0, 0, 10.f * 10);
+  fluid->add_source_at(0, 0, add_amount);
+  std::cout << "hi3" << std::endl;
+  for (int i=0; i<24; i++){
+    std::cout << "hi4" << std::endl;
+    fluid->step();
+    std::cout << "hi5" << std::endl;
+    Image image(CELLS_X, CELLS_Y);
+    for (size_t y = 0; y < CELLS_Y; y++) {
+      for (size_t x = 0; x < CELLS_X; x++) {
+        std::cout << "hi6" << std::endl;
+        cr = fluid->S_at(y, x);
+        cg = fluid->S_at(y, x);
+        cb = fluid->S_at(y, x);
+        glm::vec3 mycolor{cr, cg, cb};
+        image.SetPixel(y, x, mycolor);
+      }
+    }
+    image.SavePNG("frame"+ std::to_string(i) + ".png");
+  }
 }
 
 void SimulationApp::SetupScene() {
