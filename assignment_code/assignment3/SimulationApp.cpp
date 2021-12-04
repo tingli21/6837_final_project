@@ -14,16 +14,11 @@
 #include "gloo/cameras/ArcBallCameraNode.hpp"
 #include "gloo/debug/AxisNode.hpp"
 
-<<<<<<< HEAD
 #include "Fluid.hpp"
 #include "gloo/Image.hpp"
 #include <string>
 #include "Parameters.hpp"
-=======
-#include "MacGrid.hpp"
-#include "MarkerParticle.hpp"
-#include "GridFluidSystem.hpp"
->>>>>>> 391e070c1c55bf248620137f33ad86619067d1cd
+
 
 
 namespace GLOO {
